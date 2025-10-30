@@ -1,6 +1,6 @@
 #include "math_utils.h"
 
-#include <stdlib.h>
+#include <cstdlib>
 
 namespace MathUtils
 {
