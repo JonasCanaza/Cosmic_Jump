@@ -14,6 +14,9 @@
     <ClCompile Include="src\entities\obstacle.cpp">
       <Filter>Entities</Filter>
     </ClCompile>
+    <ClCompile Include="src\utilities\math_utils.cpp">
+      <Filter>Utilities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Game">
@@ -27,6 +30,9 @@
     </Filter>
     <Filter Include="Entities">
       <UniqueIdentifier>{e9c9768d-7b02-420e-b778-3f4b77681851}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utilities">
+      <UniqueIdentifier>{72014684-7efd-4d35-9bcd-6b32e08f2f8a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -47,6 +53,9 @@
     </ClInclude>
     <ClInclude Include="src\entities\obstacle.h">
       <Filter>Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utilities\math_utils.h">
+      <Filter>Utilities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

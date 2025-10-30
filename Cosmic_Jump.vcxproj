@@ -24,6 +24,7 @@
     <ClCompile Include="src\game\game.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\screens\gameplay_screen.cpp" />
+    <ClCompile Include="src\utilities\math_utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\entities\obstacle.h" />
@@ -32,6 +33,7 @@
     <ClInclude Include="src\game\game_constants.h" />
     <ClInclude Include="src\geometry\rectangle.h" />
     <ClInclude Include="src\screens\gameplay_screen.h" />
+    <ClInclude Include="src\utilities\math_utils.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
