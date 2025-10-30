@@ -19,6 +19,7 @@ namespace Gameplay
 
 	static void HandleCollisionBetweenPlayerAndObstacle();
 	static void DrawVersion();
+	static void DrawInputs();
 	static void Reset();
 
 	void Init()
@@ -58,6 +59,8 @@ namespace Gameplay
 
 		Player::Draw(player);
 		Obstacle::Draw(obstacle);
+
+		DrawInputs();
 		DrawVersion();
 
 		EndDrawing();
@@ -81,6 +84,16 @@ namespace Gameplay
 		int y = SCREEN_HEIGHT - VERSION_TEXT_SIZE;
 
 		DrawText(PROGRAM_VERSION.c_str(), x, y, VERSION_TEXT_SIZE, WHITE);
+	}
+
+	static void DrawInputs()
+	{
+		std::string text = "Move up: W     |     Move down: S";
+		int fontSize = 34;
+
+		int x = SCREEN_WIDTH / 2 - MeasureText(text.c_str(), fontSize) / 2;
+
+		DrawText(text.c_str(), x, 0, fontSize, WHITE);
 	}
 
 	static void Reset()
