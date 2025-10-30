@@ -8,6 +8,9 @@
     <ClCompile Include="src\screens\gameplay_screen.cpp">
       <Filter>Screens</Filter>
     </ClCompile>
+    <ClCompile Include="src\entities\player.cpp">
+      <Filter>Entities</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Game">
@@ -15,6 +18,12 @@
     </Filter>
     <Filter Include="Screens">
       <UniqueIdentifier>{b21eff09-054e-43d1-b17f-f20496967ffd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Geometry">
+      <UniqueIdentifier>{e32daf53-b6fc-414c-81e3-917c42e48b7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Entities">
+      <UniqueIdentifier>{e9c9768d-7b02-420e-b778-3f4b77681851}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -26,6 +35,12 @@
     </ClInclude>
     <ClInclude Include="src\screens\gameplay_screen.h">
       <Filter>Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="src\geometry\rectangle.h">
+      <Filter>Geometry</Filter>
+    </ClInclude>
+    <ClInclude Include="src\entities\player.h">
+      <Filter>Entities</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
