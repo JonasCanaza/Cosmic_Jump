@@ -2,5 +2,30 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\game\game.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="src\screens\gameplay_screen.cpp">
+      <Filter>Screens</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Game">
+      <UniqueIdentifier>{e56be96c-e2be-46b2-9641-ac1f95cd8462}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Screens">
+      <UniqueIdentifier>{b21eff09-054e-43d1-b17f-f20496967ffd}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\game\game.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\game_constants.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="src\screens\gameplay_screen.h">
+      <Filter>Screens</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

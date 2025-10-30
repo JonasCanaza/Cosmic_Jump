@@ -1,8 +1,8 @@
-#include <iostream>
+#include "game/game.h"
 
 int main()
 {
-	std::cout << "Project initiated" << std::endl;
+	CosmicJump::Play();
 
 	return 0;
 }
