@@ -1,12 +1,16 @@
 #include "screens/gameplay_screen.h"
 
+#include <iostream>
+
 #include "raylib.h"
 
 #include "game/game_constants.h"
 #include "entities/player.h"
 #include "entities/obstacle.h"
+#include "collision/collision_manager.h"
 
 using namespace Game;
+using namespace Collision;
 
 namespace Gameplay
 {
@@ -15,6 +19,7 @@ namespace Gameplay
 
 	static float deltaTime;
 
+	static void HandleCollisionBetweenPlayerAndObstacle();
 	static void DrawVersion();
 
 	void Init()
@@ -43,6 +48,8 @@ namespace Gameplay
 		deltaTime = GetFrameTime();
 
 		Obstacle::Update(obstacle, deltaTime);
+
+		HandleCollisionBetweenPlayerAndObstacle();
 	}
 
 	void Draw()
@@ -55,6 +62,15 @@ namespace Gameplay
 		DrawVersion();
 
 		EndDrawing();
+	}
+
+	static void HandleCollisionBetweenPlayerAndObstacle()
+	{
+		if (CheckCollisionRectangle(player.rectangle, obstacle.rectangleTop) ||
+			CheckCollisionRectangle(player.rectangle, obstacle.rectangleBottom))
+		{
+			std::cout << "Collision!" << std::endl;
+		}
 	}
 
 	static void DrawVersion()
