@@ -12,9 +12,12 @@ namespace CosmicJump
 	void Play()
 	{
 		InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, PROGRAM_NAME.c_str());
+		Gameplay::Init();
 
 		while (!WindowShouldClose())
 		{
+			Gameplay::Input();
+			Gameplay::Update();
 			Gameplay::Draw();
 		}
 	}

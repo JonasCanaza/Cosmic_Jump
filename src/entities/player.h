@@ -12,8 +12,9 @@ namespace Player
 		bool isActive;
 	};
 
-	void Init();
-	void Input();
-	void Update();
-	void Draw();
+	void Draw(Player player);
+
+	Player Create();
+	void MoveUp(Player& player, float deltaTime);
+	void MoveDown(Player& player, float deltaTime);
 }

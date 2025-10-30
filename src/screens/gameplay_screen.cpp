@@ -3,18 +3,51 @@
 #include "raylib.h"
 
 #include "game/game_constants.h"
+#include "entities/player.h"
 
 using namespace Game;
 
 namespace Gameplay
 {
+	static Player::Player player;
+
+	static float deltaTime;
+
 	static void DrawVersion();
+
+	void Init()
+	{
+		player = Player::Create();
+
+		deltaTime = GetFrameTime();
+	}
+
+	void Input()
+	{
+		if (IsKeyDown(KEY_W))
+		{
+			Player::MoveUp(player, deltaTime);
+		}
+
+		if (IsKeyDown(KEY_S))
+		{
+			Player::MoveDown(player, deltaTime);
+		}
+	}
+
+	void Update()
+	{
+		deltaTime = GetFrameTime();
+
+
+	}
 
 	void Draw()
 	{
 		BeginDrawing();
 		ClearBackground(BLACK);
 
+		Player::Draw(player);
 		DrawVersion();
 
 		EndDrawing();
