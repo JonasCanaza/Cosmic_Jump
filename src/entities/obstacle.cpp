@@ -55,6 +55,11 @@ namespace Obstacle
 		return newObstacle;
 	}
 
+	void Reset(Obstacle& obstacle)
+	{
+		RandomizeVerticalPosition(obstacle);
+	}
+
 	static void Move(Obstacle& obstacle, float deltaTime)
 	{
 		obstacle.rectangleTop.x -= obstacle.speedX * deltaTime;

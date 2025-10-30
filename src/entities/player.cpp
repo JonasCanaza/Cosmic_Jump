@@ -39,6 +39,12 @@ namespace Player
 		return newPlayer;
 	}
 
+	void Reset(Player& player)
+	{
+		player.rectangle.x = DEFAULT_X;
+		player.rectangle.y = static_cast<float>(SCREEN_HEIGHT) / 2.0f - DEFAULT_WIDTH / 2.0f;
+	}
+
 	void MoveUp(Player& player, float deltaTime)
 	{
 		player.rectangle.y += -DEFAULT_SPEED_Y * deltaTime;

@@ -16,4 +16,5 @@ namespace Obstacle
 	void Draw(Obstacle obstacle);
 
 	Obstacle Create();
+	void Reset(Obstacle& obstacle);
 }

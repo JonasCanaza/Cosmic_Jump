@@ -1,7 +1,5 @@
 #include "screens/gameplay_screen.h"
 
-#include <iostream>
-
 #include "raylib.h"
 
 #include "game/game_constants.h"
@@ -21,6 +19,7 @@ namespace Gameplay
 
 	static void HandleCollisionBetweenPlayerAndObstacle();
 	static void DrawVersion();
+	static void Reset();
 
 	void Init()
 	{
@@ -69,7 +68,7 @@ namespace Gameplay
 		if (CheckCollisionRectangle(player.rectangle, obstacle.rectangleTop) ||
 			CheckCollisionRectangle(player.rectangle, obstacle.rectangleBottom))
 		{
-			std::cout << "Collision!" << std::endl;
+			Reset();
 		}
 	}
 
@@ -82,5 +81,11 @@ namespace Gameplay
 		int y = SCREEN_HEIGHT - VERSION_TEXT_SIZE;
 
 		DrawText(PROGRAM_VERSION.c_str(), x, y, VERSION_TEXT_SIZE, WHITE);
+	}
+
+	static void Reset()
+	{
+		Player::Reset(player);
+		Obstacle::Reset(obstacle);
 	}
 }
