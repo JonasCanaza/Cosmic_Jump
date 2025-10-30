@@ -4,12 +4,14 @@
 
 #include "game/game_constants.h"
 #include "entities/player.h"
+#include "entities/obstacle.h"
 
 using namespace Game;
 
 namespace Gameplay
 {
 	static Player::Player player;
+	static Obstacle::Obstacle obstacle;
 
 	static float deltaTime;
 
@@ -18,6 +20,7 @@ namespace Gameplay
 	void Init()
 	{
 		player = Player::Create();
+		obstacle = Obstacle::Create();
 
 		deltaTime = GetFrameTime();
 	}
@@ -39,7 +42,7 @@ namespace Gameplay
 	{
 		deltaTime = GetFrameTime();
 
-
+		Obstacle::Update(obstacle, deltaTime);
 	}
 
 	void Draw()
@@ -48,6 +51,7 @@ namespace Gameplay
 		ClearBackground(BLACK);
 
 		Player::Draw(player);
+		Obstacle::Draw(obstacle);
 		DrawVersion();
 
 		EndDrawing();

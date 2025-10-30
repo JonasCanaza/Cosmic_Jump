@@ -6,9 +6,14 @@ namespace Obstacle
 {
 	struct Obstacle
 	{
-		Geometry::Rectangle rectangle;
+		Geometry::Rectangle rectangleTop;
+		Geometry::Rectangle rectangleBottom;
 		float speedX;
-		float speedY;
 		bool isActive;
 	};
+
+	void Update(Obstacle& obstacle, float deltaTime);
+	void Draw(Obstacle obstacle);
+
+	Obstacle Create();
 }
