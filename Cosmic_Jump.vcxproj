@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\collision\collision_manager.cpp" />
     <ClCompile Include="src\entities\obstacle.cpp" />
     <ClCompile Include="src\entities\player.cpp" />
     <ClCompile Include="src\game\game.cpp" />
@@ -27,6 +28,7 @@
     <ClCompile Include="src\utilities\math_utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\collision\collision_manager.h" />
     <ClInclude Include="src\entities\obstacle.h" />
     <ClInclude Include="src\entities\player.h" />
     <ClInclude Include="src\game\game.h" />
