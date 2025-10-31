@@ -20,6 +20,8 @@
     <ClCompile Include="src\collision\collision_manager.cpp">
       <Filter>Collision</Filter>
     </ClCompile>
+    <ClCompile Include="src\screens\main_menu_screen.cpp" />
+    <ClCompile Include="src\screens\credits_screen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Game">
@@ -66,5 +68,7 @@
     <ClInclude Include="src\collision\collision_manager.h">
       <Filter>Collision</Filter>
     </ClInclude>
+    <ClInclude Include="src\screens\main_menu_screen.h" />
+    <ClInclude Include="src\screens\credits_screen.h" />
   </ItemGroup>
 </Project>
