@@ -2,6 +2,7 @@
 
 #include "raylib.h"
 
+#include "game/game.h"
 #include "game/game_constants.h"
 #include "entities/player.h"
 #include "entities/obstacle.h"
@@ -32,6 +33,11 @@ namespace Gameplay
 
 	void Input()
 	{
+		if (IsKeyPressed(KEY_ESCAPE))
+		{
+			CosmicJump::currentScene = CosmicJump::Scenes::MainMenu;
+		}
+
 		if (IsKeyDown(KEY_W))
 		{
 			Player::MoveUp(player, deltaTime);
@@ -64,6 +70,11 @@ namespace Gameplay
 		DrawVersion();
 
 		EndDrawing();
+	}
+
+	void Close()
+	{
+
 	}
 
 	static void HandleCollisionBetweenPlayerAndObstacle()

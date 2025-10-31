@@ -5,24 +5,133 @@
 #include "raylib.h"
 
 #include "game/game_constants.h"
+#include "screens/main_menu_screen.h"
 #include "screens/gameplay_screen.h"
+#include "screens/credits_screen.h"
 
 using namespace Game;
 
 namespace CosmicJump
 {
+	Scenes currentScene = Scenes::MainMenu;
+	bool isRunning = true;
+
+	static void Init();
+	static void Input();
+	static void Update();
+	static void Draw();
+	static void Close();
+
 	void Play()
 	{
 		srand(static_cast<unsigned int>(time(0)));
 
 		InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, PROGRAM_NAME.c_str());
-		Gameplay::Init();
+		Init();
+		SetExitKey(KEY_NULL);
 
-		while (!WindowShouldClose())
+		while (!WindowShouldClose() && isRunning)
 		{
-			Gameplay::Input();
-			Gameplay::Update();
-			Gameplay::Draw();
+			Input();
+			Update();
+			Draw();
 		}
+
+		Close();
+	}
+
+	static void Init()
+	{
+		MainMenu::Init();
+		Gameplay::Init();
+		Credits::Init();
+	}
+
+	static void Input()
+	{
+		switch (currentScene)
+		{
+		case CosmicJump::Scenes::MainMenu:
+
+			MainMenu::Input();
+
+			break;
+		case CosmicJump::Scenes::Gameplay:
+
+			Gameplay::Input();
+
+			break;
+		case CosmicJump::Scenes::Credits:
+
+			Credits::Input();
+
+			break;
+		default:
+
+			// THERE ARE NO OTHER SCENES
+
+			break;
+		}
+	}
+
+	static void Update()
+	{
+		switch (currentScene)
+		{
+		case CosmicJump::Scenes::MainMenu:
+
+			MainMenu::Update();
+
+			break;
+		case CosmicJump::Scenes::Gameplay:
+
+			Gameplay::Update();
+
+			break;
+		case CosmicJump::Scenes::Credits:
+
+			Credits::Update();
+
+			break;
+		default:
+
+			// THERE ARE NO OTHER SCENES
+
+			break;
+		}
+	}
+
+	static void Draw()
+	{
+		switch (currentScene)
+		{
+		case CosmicJump::Scenes::MainMenu:
+
+			MainMenu::Draw();
+
+			break;
+		case CosmicJump::Scenes::Gameplay:
+
+			Gameplay::Draw();
+
+			break;
+		case CosmicJump::Scenes::Credits:
+
+			Credits::Draw();
+
+			break;
+		default:
+
+			// THERE ARE NO OTHER SCENES
+
+			break;
+		}
+	}
+
+	static void Close()
+	{
+		MainMenu::Close();
+		Gameplay::Close();
+		Credits::Close();
 	}
 }

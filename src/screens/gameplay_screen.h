@@ -6,4 +6,5 @@ namespace Gameplay
 	void Input();
 	void Update();
 	void Draw();
+	void Close();
 }
