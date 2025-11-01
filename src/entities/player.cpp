@@ -11,10 +11,9 @@ namespace Player
 	static const float DEFAULT_X = 200.0f;
 	static const float DEFAULT_WIDTH = 75.0f;
 	static const float DEFAULT_HEIGHT = 75.0f;
-	static const float DEFAULT_SPEED_X = 450.0f;
-	static const float DEFAULT_SPEED_Y = 450.0f;
 
-	static const float GRAVITY = 1200.0f;
+	static const float GRAVITY = 1800.0f;
+	const float JUMP_STRENGTH = -650.0f;
 
 	static void UpdateGravity(Player& player, float deltaTime);
 
@@ -22,7 +21,7 @@ namespace Player
 	{
 		UpdateGravity(player, deltaTime);
 
-		player.rectangle.y += player.rectangle.y * deltaTime;
+		player.rectangle.y += player.speedY * deltaTime;
 	}
 
 	void Draw(Player player)
@@ -43,8 +42,8 @@ namespace Player
 		newPlayer.rectangle.y = static_cast<float>(SCREEN_HEIGHT) / 2.0f - DEFAULT_WIDTH / 2.0f;
 		newPlayer.rectangle.width = DEFAULT_WIDTH;
 		newPlayer.rectangle.height = DEFAULT_HEIGHT;
-		newPlayer.speedX = DEFAULT_SPEED_X;
-		newPlayer.speedY = DEFAULT_SPEED_Y;
+		newPlayer.speedX = 0.0f;
+		newPlayer.speedY = 0.0f;
 		newPlayer.isActive = true;
 
 		return newPlayer;
@@ -54,16 +53,12 @@ namespace Player
 	{
 		player.rectangle.x = DEFAULT_X;
 		player.rectangle.y = static_cast<float>(SCREEN_HEIGHT) / 2.0f - DEFAULT_WIDTH / 2.0f;
+		player.speedY = 0.0f;
 	}
 
-	void MoveUp(Player& player, float deltaTime)
+	void Jump(Player& player)
 	{
-		player.rectangle.y += -DEFAULT_SPEED_Y * deltaTime;
-	}
-
-	void MoveDown(Player& player, float deltaTime)
-	{
-		player.rectangle.y += DEFAULT_SPEED_Y * deltaTime;
+		player.speedY = JUMP_STRENGTH;
 	}
 
 	static void UpdateGravity(Player& player, float deltaTime)

@@ -17,6 +17,5 @@ namespace Player
 
 	Player Create();
 	void Reset(Player& player);
-	void MoveUp(Player& player, float deltaTime);
-	void MoveDown(Player& player, float deltaTime);
+	void Jump(Player& player);
 }

@@ -51,14 +51,9 @@ namespace Gameplay
 			CosmicJump::currentScene = CosmicJump::Scenes::MainMenu;
 		}
 
-		if (IsKeyDown(KEY_W))
+		if (IsKeyPressed(KEY_SPACE))
 		{
-			Player::MoveUp(player, deltaTime);
-		}
-
-		if (IsKeyDown(KEY_S))
-		{
-			Player::MoveDown(player, deltaTime);
+			Player::Jump(player);
 		}
 	}
 
