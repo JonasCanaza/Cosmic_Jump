@@ -12,9 +12,23 @@ using namespace UIConstants;
 
 namespace Credits
 {
+	static const std::string TITLE = "Credits";
+	static const std::string LABEL = "Developed by:";
+	static const std::string AUTHOR = "Jonas Canaza";
+
+	static const int FONT_SIZE_TITLE = 64;
+	static const int FONT_SIZE_TEXT = 32;
+
+	static const float TITLE_TOP_OFFSET = 0.1f;
+	static const float LABEL_Y_CENTER = 0.5f;
+	static const int AUTHOR_LINE_SPACING = 40;
+
 	static Button::Button button;
 	static const std::string buttonName = "Back";
 
+	static const int BUTTON_MARGIN_BOTTOM = 10;
+
+	static void DrawInfo();
 	static void InitButton();
 	static void UpdateButton();
 	static void DrawButton();
@@ -42,7 +56,7 @@ namespace Credits
 		ClearBackground(BLACK);
 		BeginDrawing();
 
-		DrawText("Credits!", 0, 0, 24, WHITE);
+		DrawInfo();
 		DrawButton();
 
 		EndDrawing();
@@ -53,11 +67,26 @@ namespace Credits
 
 	}
 
+	static void DrawInfo()
+	{
+		int titleX = (SCREEN_WIDTH - MeasureText(TITLE.c_str(), FONT_SIZE_TITLE)) / 2;
+		int titleY = static_cast<int>(SCREEN_HEIGHT * TITLE_TOP_OFFSET);
+
+		int labelX = (SCREEN_WIDTH - MeasureText(LABEL.c_str(), FONT_SIZE_TEXT)) / 2;
+		int labelY = static_cast<int>(SCREEN_HEIGHT * LABEL_Y_CENTER);
+
+		int authorX = (SCREEN_WIDTH - MeasureText(AUTHOR.c_str(), FONT_SIZE_TEXT)) / 2;
+		int authorY = labelY + AUTHOR_LINE_SPACING;
+
+		DrawText(TITLE.c_str(), titleX, titleY, FONT_SIZE_TITLE, WHITE);
+		DrawText(LABEL.c_str(), labelX, labelY, FONT_SIZE_TEXT, WHITE);
+		DrawText(AUTHOR.c_str(), authorX, authorY, FONT_SIZE_TEXT, WHITE);
+	}
+
 	static void InitButton()
 	{
 		float x = static_cast<float>(SCREEN_WIDTH) / 2.0f - BUTTON_WIDTH / 2.0f;
-		float marginY = 10;
-		float y = static_cast<float>(SCREEN_HEIGHT) - BUTTON_HEIGHT - marginY;
+		float y = static_cast<float>(SCREEN_HEIGHT) - BUTTON_HEIGHT - BUTTON_MARGIN_BOTTOM;
 
 		button = Button::Create(x, y, BUTTON_WIDTH, BUTTON_HEIGHT, buttonName);
 	}
