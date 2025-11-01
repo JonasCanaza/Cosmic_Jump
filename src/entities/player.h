@@ -12,6 +12,7 @@ namespace Player
 		bool isActive;
 	};
 
+	void Update(Player& player, float deltaTime);
 	void Draw(Player player);
 
 	Player Create();

@@ -66,6 +66,7 @@ namespace Gameplay
 	{
 		deltaTime = GetFrameTime();
 
+		Player::Update(player, deltaTime);
 		Obstacle::Update(obstacle, deltaTime);
 
 		HandleCollisionBetweenPlayerAndObstacle();

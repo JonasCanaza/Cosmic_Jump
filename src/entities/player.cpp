@@ -14,6 +14,17 @@ namespace Player
 	static const float DEFAULT_SPEED_X = 450.0f;
 	static const float DEFAULT_SPEED_Y = 450.0f;
 
+	static const float GRAVITY = 1200.0f;
+
+	static void UpdateGravity(Player& player, float deltaTime);
+
+	void Update(Player& player, float deltaTime)
+	{
+		UpdateGravity(player, deltaTime);
+
+		player.rectangle.y += player.rectangle.y * deltaTime;
+	}
+
 	void Draw(Player player)
 	{
 		int x = static_cast<int>(player.rectangle.x);
@@ -53,5 +64,10 @@ namespace Player
 	void MoveDown(Player& player, float deltaTime)
 	{
 		player.rectangle.y += DEFAULT_SPEED_Y * deltaTime;
+	}
+
+	static void UpdateGravity(Player& player, float deltaTime)
+	{
+		player.speedY += GRAVITY * deltaTime;
 	}
 }
