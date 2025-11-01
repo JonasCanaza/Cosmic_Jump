@@ -87,5 +87,8 @@
     <ClInclude Include="src\interface\button.h">
       <Filter>Interface</Filter>
     </ClInclude>
+    <ClInclude Include="src\interface\ui_constants.h">
+      <Filter>Interface</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
