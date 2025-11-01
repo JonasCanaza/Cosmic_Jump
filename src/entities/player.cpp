@@ -16,12 +16,15 @@ namespace Player
 	const float JUMP_STRENGTH = -650.0f;
 
 	static void UpdateGravity(Player& player, float deltaTime);
+	static void LimitWithBorders(Player& player);
 
 	void Update(Player& player, float deltaTime)
 	{
 		UpdateGravity(player, deltaTime);
 
 		player.rectangle.y += player.speedY * deltaTime;
+
+		LimitWithBorders(player);
 	}
 
 	void Draw(Player player)
@@ -64,5 +67,20 @@ namespace Player
 	static void UpdateGravity(Player& player, float deltaTime)
 	{
 		player.speedY += GRAVITY * deltaTime;
+	}
+
+	static void LimitWithBorders(Player& player)
+	{
+		if (player.rectangle.y < 0.0f)
+		{
+			player.rectangle.y = 0.0f;
+			player.speedY = 0.0f;
+		}
+
+		if (player.rectangle.y + DEFAULT_HEIGHT > SCREEN_HEIGHT)
+		{
+			player.rectangle.y = SCREEN_HEIGHT - DEFAULT_HEIGHT;
+			player.speedY = 0.0f;
+		}
 	}
 }
