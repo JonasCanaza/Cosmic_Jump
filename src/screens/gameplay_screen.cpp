@@ -30,6 +30,7 @@ namespace Gameplay
 	static void UpdateButton();
 	static void DrawButton();
 	static void HandleCollisionBetweenPlayerAndObstacle();
+	static void HandlePlayerFloorCollision();
 	static void DrawVersion();
 	static void DrawInputs();
 	static void Reset();
@@ -65,6 +66,7 @@ namespace Gameplay
 		Obstacle::Update(obstacle, deltaTime);
 
 		HandleCollisionBetweenPlayerAndObstacle();
+		HandlePlayerFloorCollision();
 
 		UpdateButton();
 	}
@@ -117,6 +119,14 @@ namespace Gameplay
 	{
 		if (CheckCollisionRectangle(player.rectangle, obstacle.rectangleTop) ||
 			CheckCollisionRectangle(player.rectangle, obstacle.rectangleBottom))
+		{
+			Reset();
+		}
+	}
+
+	static void HandlePlayerFloorCollision()
+	{
+		if (player.rectangle.y + player.rectangle.height >= SCREEN_HEIGHT)
 		{
 			Reset();
 		}
