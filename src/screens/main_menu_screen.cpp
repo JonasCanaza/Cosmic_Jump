@@ -19,6 +19,13 @@ namespace MainMenu
 	static Button::Button buttons[MAX_BUTTONS];
 	static const std::string buttonNames[MAX_BUTTONS] = { "Play", "Credits", "Exit" };
 
+	enum ButtonID
+	{
+		Play,
+		Credits,
+		Exit,
+	};
+
 	static void InitLogo();
 	static void InitButtons();
 	static void DrawLogo();
@@ -108,6 +115,21 @@ namespace MainMenu
 		for (int i = 0; i < MAX_BUTTONS; i++)
 		{
 			Button::Update(buttons[i]);
+		}
+
+		if (buttons[Play].clicked)
+		{
+			CosmicJump::currentScene = CosmicJump::Scenes::Gameplay;
+		}
+
+		if (buttons[Credits].clicked)
+		{
+			CosmicJump::currentScene = CosmicJump::Scenes::Credits;
+		}
+
+		if (buttons[Exit].clicked)
+		{
+			CosmicJump::isRunning = false;
 		}
 	}
 
