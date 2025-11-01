@@ -105,6 +105,11 @@ namespace Gameplay
 	static void UpdateButton()
 	{
 		Button::Update(button);
+
+		if (button.clicked)
+		{
+			CosmicJump::currentScene = CosmicJump::Scenes::MainMenu;
+		}
 	}
 
 	static void DrawButton()
