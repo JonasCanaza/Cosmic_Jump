@@ -7,6 +7,7 @@
 #include "entities/player.h"
 #include "entities/obstacle.h"
 #include "collision/collision_manager.h"
+#include "interface/button.h"
 
 using namespace Game;
 using namespace Collision;
@@ -16,8 +17,18 @@ namespace Gameplay
 	static Player::Player player;
 	static Obstacle::Obstacle obstacle;
 
+	static Button::Button button;
+	static const std::string buttonName = " | | ";
+
+	static const float BUTTON_WIDTH = 60.0f;
+	static const float BUTTON_HEIGHT = 60.0f;
+	static const float BUTTON_MARGIN = 10.0f;
+
 	static float deltaTime;
 
+	static void InitButton();
+	static void UpdateButton();
+	static void DrawButton();
 	static void HandleCollisionBetweenPlayerAndObstacle();
 	static void DrawVersion();
 	static void DrawInputs();
@@ -27,6 +38,8 @@ namespace Gameplay
 	{
 		player = Player::Create();
 		obstacle = Obstacle::Create();
+
+		InitButton();
 
 		deltaTime = GetFrameTime();
 	}
@@ -56,6 +69,8 @@ namespace Gameplay
 		Obstacle::Update(obstacle, deltaTime);
 
 		HandleCollisionBetweenPlayerAndObstacle();
+
+		UpdateButton();
 	}
 
 	void Draw()
@@ -66,6 +81,8 @@ namespace Gameplay
 		Player::Draw(player);
 		Obstacle::Draw(obstacle);
 
+		DrawButton();
+
 		DrawInputs();
 		DrawVersion();
 
@@ -75,6 +92,24 @@ namespace Gameplay
 	void Close()
 	{
 
+	}
+
+	static void InitButton()
+	{
+		float x = static_cast<float>(SCREEN_WIDTH) - BUTTON_WIDTH - BUTTON_MARGIN;
+		float y = BUTTON_MARGIN;
+
+		button = Button::Create(x, y, BUTTON_WIDTH, BUTTON_HEIGHT, buttonName);
+	}
+
+	static void UpdateButton()
+	{
+		Button::Update(button);
+	}
+
+	static void DrawButton()
+	{
+		Button::Draw(button);
 	}
 
 	static void HandleCollisionBetweenPlayerAndObstacle()
