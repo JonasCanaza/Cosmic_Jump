@@ -23,6 +23,7 @@
     <ClCompile Include="src\entities\obstacle.cpp" />
     <ClCompile Include="src\entities\player.cpp" />
     <ClCompile Include="src\game\game.cpp" />
+    <ClCompile Include="src\interface\button.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\screens\credits_screen.cpp" />
     <ClCompile Include="src\screens\gameplay_screen.cpp" />
@@ -36,6 +37,7 @@
     <ClInclude Include="src\game\game.h" />
     <ClInclude Include="src\game\game_constants.h" />
     <ClInclude Include="src\geometry\rectangle.h" />
+    <ClInclude Include="src\interface\button.h" />
     <ClInclude Include="src\screens\credits_screen.h" />
     <ClInclude Include="src\screens\gameplay_screen.h" />
     <ClInclude Include="src\screens\main_menu_screen.h" />

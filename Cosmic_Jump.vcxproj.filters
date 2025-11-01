@@ -26,6 +26,9 @@
     <ClCompile Include="src\screens\credits_screen.cpp">
       <Filter>Screens</Filter>
     </ClCompile>
+    <ClCompile Include="src\interface\button.cpp">
+      <Filter>Interface</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Game">
@@ -45,6 +48,9 @@
     </Filter>
     <Filter Include="Collision">
       <UniqueIdentifier>{6d5f4c06-125a-498d-873e-c7c1584f5d59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Interface">
+      <UniqueIdentifier>{66c555c7-942a-48e1-858e-80ad2feec78c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -77,6 +83,9 @@
     </ClInclude>
     <ClInclude Include="src\screens\credits_screen.h">
       <Filter>Screens</Filter>
+    </ClInclude>
+    <ClInclude Include="src\interface\button.h">
+      <Filter>Interface</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
