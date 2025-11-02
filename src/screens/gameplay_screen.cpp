@@ -24,11 +24,21 @@ namespace Gameplay
 	static const float BUTTON_HEIGHT = 60.0f;
 	static const float BUTTON_MARGIN = 10.0f;
 
+	static const std::string TEXT_CONTROLS = "Controls: SPACE to jump";
+	static const std::string TEXT_START_GAME = "Press SPACE to start the game";
+
+	static const int TUTORIAL_FONT_SIZE = 36;
+	static const int TUTORIAL_TEXT_SPACING = 90;
+
+	static const Color TUTORIAL_BACKGROUND = { 0, 0, 0, 150 };
+
 	static float deltaTime;
+	static bool isGameStarted;
 
 	static void InitButton();
 	static void UpdateButton();
 	static void DrawButton();
+	static void DrawTutorial();
 	static void HandleCollisionBetweenPlayerAndObstacle();
 	static void HandlePlayerFloorCollision();
 	static void DrawVersion();
@@ -42,6 +52,7 @@ namespace Gameplay
 		InitButton();
 
 		deltaTime = GetFrameTime();
+		isGameStarted = false;
 	}
 
 	void Input()
@@ -51,9 +62,17 @@ namespace Gameplay
 			CosmicJump::currentScene = CosmicJump::Scenes::MainMenu;
 		}
 
-		if (IsKeyPressed(KEY_SPACE))
+		if (IsKeyPressed(KEY_SPACE) && isGameStarted)
 		{
 			Player::Jump(player);
+		}
+		else
+		{
+			if (IsKeyPressed(KEY_SPACE) && !isGameStarted)
+			{
+				isGameStarted = true;
+				Player::Jump(player);
+			}
 		}
 	}
 
@@ -61,11 +80,14 @@ namespace Gameplay
 	{
 		deltaTime = GetFrameTime();
 
-		Player::Update(player, deltaTime);
-		Obstacle::Update(obstacle, deltaTime);
+		if (isGameStarted)
+		{
+			Player::Update(player, deltaTime);
+			Obstacle::Update(obstacle, deltaTime);
 
-		HandleCollisionBetweenPlayerAndObstacle();
-		HandlePlayerFloorCollision();
+			HandleCollisionBetweenPlayerAndObstacle();
+			HandlePlayerFloorCollision();
+		}
 
 		UpdateButton();
 	}
@@ -77,6 +99,11 @@ namespace Gameplay
 
 		Player::Draw(player);
 		Obstacle::Draw(obstacle);
+
+		if (!isGameStarted)
+		{
+			DrawTutorial();
+		}
 
 		DrawButton();
 
@@ -113,12 +140,33 @@ namespace Gameplay
 		Button::Draw(button);
 	}
 
+	static void DrawTutorial()
+	{
+		int textControlsWidth = MeasureText(TEXT_CONTROLS.c_str(), TUTORIAL_FONT_SIZE);
+		int textStartGameWidth = MeasureText(TEXT_START_GAME.c_str(), TUTORIAL_FONT_SIZE);
+
+		int textControlsX = (SCREEN_WIDTH - textControlsWidth) / 2;
+		int textStartGameX = (SCREEN_WIDTH - textStartGameWidth) / 2;
+
+		int totalBlockHeight = TUTORIAL_FONT_SIZE + TUTORIAL_TEXT_SPACING + TUTORIAL_FONT_SIZE;
+
+		int blockTopY = (SCREEN_HEIGHT - totalBlockHeight) / 2;
+
+		int textControlsY = blockTopY;
+		int textStartGameY = textControlsY + TUTORIAL_FONT_SIZE + TUTORIAL_TEXT_SPACING;
+
+		DrawRectangle(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT, TUTORIAL_BACKGROUND);
+		DrawText(TEXT_CONTROLS.c_str(), textControlsX, textControlsY, TUTORIAL_FONT_SIZE, WHITE);
+		DrawText(TEXT_START_GAME.c_str(), textStartGameX, textStartGameY, TUTORIAL_FONT_SIZE, WHITE);
+	}
+
 	static void HandleCollisionBetweenPlayerAndObstacle()
 	{
 		if (CheckCollisionRectangle(player.rectangle, obstacle.rectangleTop) ||
 			CheckCollisionRectangle(player.rectangle, obstacle.rectangleBottom))
 		{
 			Reset();
+			isGameStarted = false;
 		}
 	}
 
@@ -127,6 +175,7 @@ namespace Gameplay
 		if (player.rectangle.y + player.rectangle.height >= SCREEN_HEIGHT)
 		{
 			Reset();
+			isGameStarted = false;
 		}
 	}
 
