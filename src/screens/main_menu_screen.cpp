@@ -28,9 +28,10 @@ namespace MainMenu
 
 	static void InitLogo();
 	static void InitButtons();
+	static void UpdateButtons();
 	static void DrawLogo();
 	static void DrawButtons();
-	static void UpdateButtons();
+	static void DrawVersion();
 	static float GetTotalMenuHeight();
 
 	void Init()
@@ -56,6 +57,7 @@ namespace MainMenu
 
 		DrawLogo();
 		DrawButtons();
+		DrawVersion();
 
 		EndDrawing();
 	}
@@ -131,6 +133,17 @@ namespace MainMenu
 		{
 			CosmicJump::isRunning = false;
 		}
+	}
+
+	static void DrawVersion()
+	{
+		int textWidth = MeasureText(PROGRAM_VERSION.c_str(), VERSION_TEXT_SIZE);
+		int margin = 10;
+
+		int x = SCREEN_WIDTH - textWidth - margin;
+		int y = SCREEN_HEIGHT - VERSION_TEXT_SIZE;
+
+		DrawText(PROGRAM_VERSION.c_str(), x, y, VERSION_TEXT_SIZE, WHITE);
 	}
 
 	static float GetTotalMenuHeight()

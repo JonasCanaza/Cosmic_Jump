@@ -41,7 +41,6 @@ namespace Gameplay
 	static void DrawTutorial();
 	static void HandleCollisionBetweenPlayerAndObstacle();
 	static void HandlePlayerFloorCollision();
-	static void DrawVersion();
 	static void Reset();
 
 	void Init()
@@ -106,8 +105,6 @@ namespace Gameplay
 		}
 
 		DrawButton();
-
-		DrawVersion();
 
 		EndDrawing();
 	}
@@ -177,17 +174,6 @@ namespace Gameplay
 			Reset();
 			isGameStarted = false;
 		}
-	}
-
-	static void DrawVersion()
-	{
-		int textWidth = MeasureText(PROGRAM_VERSION.c_str(), VERSION_TEXT_SIZE);
-		int margin = 10;
-
-		int x = SCREEN_WIDTH - textWidth - margin;
-		int y = SCREEN_HEIGHT - VERSION_TEXT_SIZE;
-
-		DrawText(PROGRAM_VERSION.c_str(), x, y, VERSION_TEXT_SIZE, WHITE);
 	}
 
 	static void Reset()
