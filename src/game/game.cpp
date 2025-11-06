@@ -8,6 +8,7 @@
 #include "screens/main_menu_screen.h"
 #include "screens/gameplay_screen.h"
 #include "screens/credits_screen.h"
+#include "background/background_manager.h"
 
 using namespace Game;
 
@@ -45,6 +46,8 @@ namespace CosmicJump
 		MainMenu::Init();
 		Gameplay::Init();
 		Credits::Init();
+
+		Background::Init();
 	}
 
 	static void Input()
@@ -133,5 +136,7 @@ namespace CosmicJump
 		MainMenu::Close();
 		Gameplay::Close();
 		Credits::Close();
+
+		Background::Close();
 	}
 }

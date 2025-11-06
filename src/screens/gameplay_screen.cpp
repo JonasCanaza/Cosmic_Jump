@@ -8,6 +8,7 @@
 #include "entities/obstacle.h"
 #include "collision/collision_manager.h"
 #include "interface/button.h"
+#include "background/background_manager.h"
 
 using namespace Game;
 using namespace Collision;
@@ -95,6 +96,8 @@ namespace Gameplay
 	{
 		BeginDrawing();
 		ClearBackground(BLACK);
+
+		Background::Draw();
 
 		Player::Draw(player);
 		Obstacle::Draw(obstacle);
