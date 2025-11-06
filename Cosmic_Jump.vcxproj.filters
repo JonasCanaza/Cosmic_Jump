@@ -29,6 +29,9 @@
     <ClCompile Include="src\interface\button.cpp">
       <Filter>Interface</Filter>
     </ClCompile>
+    <ClCompile Include="src\background\background_manager.cpp">
+      <Filter>Background</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Game">
@@ -51,6 +54,9 @@
     </Filter>
     <Filter Include="Interface">
       <UniqueIdentifier>{66c555c7-942a-48e1-858e-80ad2feec78c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Background">
+      <UniqueIdentifier>{dcd0b0c0-7ea6-4b01-8e25-c13fa9450303}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -89,6 +95,9 @@
     </ClInclude>
     <ClInclude Include="src\interface\ui_constants.h">
       <Filter>Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="src\background\background_manager.h">
+      <Filter>Background</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
