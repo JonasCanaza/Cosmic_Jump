@@ -82,6 +82,8 @@ namespace Gameplay
 
 		if (isGameStarted)
 		{
+			Background::Update(deltaTime);
+
 			Player::Update(player, deltaTime);
 			Obstacle::Update(obstacle, deltaTime);
 

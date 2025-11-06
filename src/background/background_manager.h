@@ -3,7 +3,7 @@
 namespace Background
 {
 	void Init();
-	void Update();
+	void Update(float deltaTime);
 	void Draw();
 	void Close();
 }
